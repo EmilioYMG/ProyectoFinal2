@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ProyectoFinal2
@@ -24,7 +20,7 @@ namespace ProyectoFinal2
             dgvActividades.DataSource = sortedActs;
 
         }
-        public List<Actividad> actividades = new List<Actividad>();
+        public List<Actividad> actividades = Form1.actividades;
         public List<Actividad> sortedActs;
         public Actividad nAct;
         
