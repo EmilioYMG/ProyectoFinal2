@@ -185,7 +185,7 @@ namespace ProyectoFinal2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(422, 238);
+            this.ClientSize = new System.Drawing.Size(908, 467);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.dgvResumen);
             this.Controls.Add(this.rbtnEditar);
@@ -201,6 +201,7 @@ namespace ProyectoFinal2
             this.Controls.Add(this.txtbNombre);
             this.Controls.Add(this.label1);
             this.Name = "Buscar";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Buscar";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResumen)).EndInit();

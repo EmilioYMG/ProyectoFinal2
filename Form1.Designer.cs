@@ -36,6 +36,7 @@ namespace ProyectoFinal2
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.btnAddAct = new System.Windows.Forms.Button();
             this.btnActs = new System.Windows.Forms.Button();
             this.btnAlumnos = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -45,7 +46,6 @@ namespace ProyectoFinal2
             this.IconoCerrar = new System.Windows.Forms.PictureBox();
             this.btnSlide = new System.Windows.Forms.PictureBox();
             this.PanelContenedor = new System.Windows.Forms.Panel();
-            this.btnAddAct = new System.Windows.Forms.Button();
             this.MenuVertical.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -131,6 +131,20 @@ namespace ProyectoFinal2
             this.button2.Text = "Buscar alumnos";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // btnAddAct
+            // 
+            this.btnAddAct.FlatAppearance.BorderSize = 0;
+            this.btnAddAct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddAct.Font = new System.Drawing.Font("Palatino Linotype", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddAct.ForeColor = System.Drawing.Color.White;
+            this.btnAddAct.Location = new System.Drawing.Point(0, 254);
+            this.btnAddAct.Name = "btnAddAct";
+            this.btnAddAct.Size = new System.Drawing.Size(250, 40);
+            this.btnAddAct.TabIndex = 0;
+            this.btnAddAct.Text = "Agregar calificación";
+            this.btnAddAct.UseVisualStyleBackColor = true;
+            this.btnAddAct.Click += new System.EventHandler(this.btnAddAct_Click);
             // 
             // btnActs
             // 
@@ -244,20 +258,6 @@ namespace ProyectoFinal2
             this.PanelContenedor.Size = new System.Drawing.Size(1050, 600);
             this.PanelContenedor.TabIndex = 2;
             // 
-            // btnAddAct
-            // 
-            this.btnAddAct.FlatAppearance.BorderSize = 0;
-            this.btnAddAct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddAct.Font = new System.Drawing.Font("Palatino Linotype", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddAct.ForeColor = System.Drawing.Color.White;
-            this.btnAddAct.Location = new System.Drawing.Point(0, 254);
-            this.btnAddAct.Name = "btnAddAct";
-            this.btnAddAct.Size = new System.Drawing.Size(250, 40);
-            this.btnAddAct.TabIndex = 0;
-            this.btnAddAct.Text = "Agregar calificación";
-            this.btnAddAct.UseVisualStyleBackColor = true;
-            this.btnAddAct.Click += new System.EventHandler(this.btnAddAct_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -268,6 +268,7 @@ namespace ProyectoFinal2
             this.Controls.Add(this.MenuVertical);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.MenuVertical.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();

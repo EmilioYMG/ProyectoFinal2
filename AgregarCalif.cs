@@ -34,13 +34,20 @@ namespace ProyectoFinal2
                     {
                         if (alumno.Nombre == txtbNombre.Text)
                         {
+                            txtbApellidos.Text = alumno.Apellidos;
+                            txtbNL.Text = alumno.NumLista.ToString();
                             foreach (Actividad act in alumno.Actividades)
                             {
                                 if (act.Nombre == cmbNombAct.SelectedItem.ToString())
                                 {
+                                    txtbCalif.Text = act.Calificacion.ToString(); 
                                     act.Calificacion = float.Parse(txtbCalif.Text);
                                 }
                             }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Alumno no encontrado\nRevise la ortografía porfavor");
                         }
                     }
                 }

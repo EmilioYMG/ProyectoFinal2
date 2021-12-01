@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ProyectoFinal2
@@ -31,21 +27,16 @@ namespace ProyectoFinal2
             Alumnos frm = new Alumnos();
             AddOwnedForm(frm);
             frm.alumnos = Form1.alumnos;
-            IngresarAlumno frm2 = new IngresarAlumno();
-            frm2.btnGuardar.Hide();
             foreach(Alumno alumno in frm.alumnos)
             {
                 if (alumno.Nombre == txtbNombre.Text||alumno.Apellidos==txtbApe.Text||alumno.NumLista.ToString()==txtbNL.Text)
                 {
-                    frm2.txtbNombre.Text = alumno.Nombre;
-                    frm2.txtbApellidos.Text = alumno.Apellidos;
-                    frm2.txtbNL.Text = alumno.NumLista.ToString();
-                    frm2.Show();
+                    txtbNombre.Text = alumno.Nombre;
+                    txtbApe.Text = alumno.Apellidos;
+                    txtbNL.Text = alumno.NumLista.ToString();
+                    dgvResumen.DataSource = alumno.Actividades;
                 }
             }
-            
-
-
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

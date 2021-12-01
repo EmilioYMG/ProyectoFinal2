@@ -12,6 +12,7 @@ namespace ProyectoFinal2
         public Alumnos()
         {
             InitializeComponent();
+            
             dt = new DataTable();
             dt.Columns.Add("Número de lista");
             dt.Columns.Add("Apellidos");
@@ -87,8 +88,13 @@ namespace ProyectoFinal2
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
+            foreach(Alumno alumno in Form1.alumnos)
+            {
+                
+            }
             List<Alumno> sortedList = alumnos.OrderBy(Alumno => Alumno.NumLista).ToList();
             dgvAlumnos.DataSource = sortedList;
+            MessageBox.Show("Actualización exitosa");
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
