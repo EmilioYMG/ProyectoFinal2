@@ -215,6 +215,7 @@ namespace ProyectoFinal2
             this.Controls.Add(this.txtbApellidos);
             this.Name = "frmAgregarCalif";
             this.Text = "AgregarCalif";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmAgregarCalif_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

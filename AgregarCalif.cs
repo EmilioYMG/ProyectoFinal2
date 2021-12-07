@@ -12,11 +12,14 @@ namespace ProyectoFinal2
 {
     public partial class frmAgregarCalif : Form
     {
-        List<Actividad> actividades = Form1.actividades;
-        List<string> nomb = Form1.actividades.ConvertAll(Actividad => Actividad.Nombre); 
-        public frmAgregarCalif()
+        List<Actividad> actividades;
+        List<string> nomb;
+        List<Alumno> alumnos;
+        public frmAgregarCalif(List<Actividad> actividadespadre, List<Alumno> alumnospadre)
         {
             InitializeComponent();
+            nomb = actividadespadre.ConvertAll(Actividad => Actividad.Nombre);
+            alumnos = alumnospadre;
             cmbNombAct.DataSource = nomb;
             txtbNombre.Enabled = false;
             txtbApellidos.Enabled = false;
@@ -27,31 +30,20 @@ namespace ProyectoFinal2
         private void btnAcept_Click(object sender, EventArgs e)
         {
            // try
-            {
+            //{
                 if (rdbNombre.Checked == true)
                 {
-                    foreach (Alumno alumno in Form1.alumnos)
+                    for(int i = 0; i < alumnos.Count; i++)
                     {
-                        if (alumno.Nombre == txtbNombre.Text)
+                        if (alumnos[i].Nombre == txtbNombre.Text)
                         {
-                            txtbApellidos.Text = alumno.Apellidos;
-                            txtbNL.Text = alumno.NumLista.ToString();
-                            foreach (Actividad act in alumno.Actividades)
-                            {
-                                if (act.Nombre == cmbNombAct.SelectedItem.ToString())
-                                {
-                                    txtbCalif.Text = act.Calificacion.ToString(); 
-                                    act.Calificacion = float.Parse(txtbCalif.Text);
-                                }
-                            }
-                        }
-                        else
-                        {
-                            MessageBox.Show("Alumno no encontrado\nRevise la ortografía porfavor");
+                            txtbNL.Text = alumnos[i].NumLista.ToString();
+                            txtbApellidos.Text = alumnos[i].Apellidos;
+                        Asignar(alumnos[i]);
                         }
                     }
                 }
-            }
+            //}
         }
 
         private void rdbNombre_CheckedChanged(object sender, EventArgs e)
@@ -73,6 +65,22 @@ namespace ProyectoFinal2
             txtbNL.Enabled = true;
             txtbNombre.Enabled = false;
             txtbApellidos.Enabled = false;
+        }
+        private void Asignar(Alumno al)
+        {
+            foreach(Actividad act in al.Actividades)
+            {
+                if (act.Nombre == cmbNombAct.SelectedItem.ToString())
+                {
+                    act.Calificacion = float.Parse(txtbCalif.Text);
+                }
+            }
+        }
+
+        private void frmAgregarCalif_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Form1.alumnos = alumnos;
+            Form1.actividades = actividades;
         }
     }
 }

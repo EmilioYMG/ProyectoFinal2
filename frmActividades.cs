@@ -8,20 +8,24 @@ namespace ProyectoFinal2
 {
     public partial class frmActividades : Form,IPasarAct
     {
+        List<Alumno> alumnos;
+        List<Actividad> actividades;
+        List<Actividad> sortedActs;
+
         private DataTable dt;
-        public frmActividades()
+        public frmActividades(List<Actividad> actividadespadre, List<Alumno> alumnospadre)
         {
             InitializeComponent();
+            alumnos = alumnospadre;
+            actividades = actividadespadre;
             dt = new DataTable();
             dt.Columns.Add("Nombre");
-            dt.Columns.Add("Ponderación %");
+            dt.Columns.Add("Ponderación%");
             dgvActividades.DataSource = dt;
-            List<Actividad> sortedActs= actividades.OrderBy(Actividad => Actividad.Nombre).ToList();
+            List<Actividad> sortedActs= actividadespadre.OrderBy(Actividad => Actividad.Nombre).ToList();
             dgvActividades.DataSource = sortedActs;
 
         }
-        public List<Actividad> actividades = Form1.actividades;
-        public List<Actividad> sortedActs;
         public Actividad nAct;
         
         private void btnNuevo_Click(object sender, EventArgs e)
@@ -40,10 +44,18 @@ namespace ProyectoFinal2
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             Form1.actividades = actividades;
-            foreach(Alumno alumno in Form1.alumnos)
+            List<string> nomb= actividades.ConvertAll(Actividad => Actividad.Nombre);
+            foreach (Alumno alumno in alumnos)
             {
-                alumno.Actividades = sortedActs;
+                foreach(Actividad act in alumno.Actividades)
+                {
+                    for (int i = 0; i <nomb.Count; i++)
+                    {
+                        act.Nombre = nomb[i];
+                    }
+                }
             }
+            Form1.alumnos = alumnos;
             this.Close();
         }
 

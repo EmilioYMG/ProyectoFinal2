@@ -91,12 +91,12 @@ namespace ProyectoFinal2
 
         private void btnActs_Click(object sender, EventArgs e)
         {
-            AbrirFormInPanel(new frmActividades());
+            AbrirFormInPanel(new frmActividades(actividades, alumnos));
         }
 
         private void btnAddAct_Click(object sender, EventArgs e)
         {
-            AbrirFormInPanel(new frmAgregarCalif());
+            AbrirFormInPanel(new frmAgregarCalif(actividades,alumnos));
         }
     }
 }

@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ProyectoFinal2
@@ -26,6 +19,7 @@ namespace ProyectoFinal2
                 Actividad actividadN = new Actividad();
                 actividadN.Nombre = txtbNombre.Text;
                 actividadN.Ponderación = float.Parse(txtbPond.Text);
+                actividadN.Calificacion = 0;
                 if (PD != null)
                 {
                     PD.PasarAct(actividadN);
