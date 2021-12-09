@@ -35,6 +35,7 @@ namespace ProyectoFinal2
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnCerrar = new System.Windows.Forms.Button();
+            this.btnActualizar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvActividades)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,6 +47,7 @@ namespace ProyectoFinal2
             this.dgvActividades.Name = "dgvActividades";
             this.dgvActividades.Size = new System.Drawing.Size(443, 292);
             this.dgvActividades.TabIndex = 0;
+            this.dgvActividades.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvActividades_CellContentDoubleClick);
             // 
             // Actividades
             // 
@@ -100,6 +102,7 @@ namespace ProyectoFinal2
             this.btnEliminar.TabIndex = 2;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnCerrar
             // 
@@ -116,6 +119,21 @@ namespace ProyectoFinal2
             this.btnCerrar.UseVisualStyleBackColor = false;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
+            // btnActualizar
+            // 
+            this.btnActualizar.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnActualizar.FlatAppearance.BorderSize = 0;
+            this.btnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnActualizar.Font = new System.Drawing.Font("Palatino Linotype", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnActualizar.ForeColor = System.Drawing.Color.White;
+            this.btnActualizar.Location = new System.Drawing.Point(551, 263);
+            this.btnActualizar.Name = "btnActualizar";
+            this.btnActualizar.Size = new System.Drawing.Size(142, 39);
+            this.btnActualizar.TabIndex = 2;
+            this.btnActualizar.Text = "Actualizar";
+            this.btnActualizar.UseVisualStyleBackColor = false;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
+            // 
             // frmActividades
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -123,6 +141,7 @@ namespace ProyectoFinal2
             this.BackColor = System.Drawing.Color.SteelBlue;
             this.ClientSize = new System.Drawing.Size(784, 411);
             this.Controls.Add(this.btnCerrar);
+            this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnNuevo);
@@ -145,5 +164,6 @@ namespace ProyectoFinal2
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnCerrar;
+        private System.Windows.Forms.Button btnActualizar;
     }
 }

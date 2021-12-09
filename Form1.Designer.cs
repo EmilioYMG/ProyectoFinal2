@@ -34,7 +34,7 @@ namespace ProyectoFinal2
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnAsistencia = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.btnAddAct = new System.Windows.Forms.Button();
             this.btnActs = new System.Windows.Forms.Button();
@@ -64,7 +64,7 @@ namespace ProyectoFinal2
             this.MenuVertical.Controls.Add(this.pictureBox3);
             this.MenuVertical.Controls.Add(this.pictureBox2);
             this.MenuVertical.Controls.Add(this.pictureBox1);
-            this.MenuVertical.Controls.Add(this.button1);
+            this.MenuVertical.Controls.Add(this.btnAsistencia);
             this.MenuVertical.Controls.Add(this.button2);
             this.MenuVertical.Controls.Add(this.btnAddAct);
             this.MenuVertical.Controls.Add(this.btnActs);
@@ -105,18 +105,19 @@ namespace ProyectoFinal2
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // button1
+            // btnAsistencia
             // 
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Palatino Linotype", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(3, 162);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(250, 40);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Grupos";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnAsistencia.FlatAppearance.BorderSize = 0;
+            this.btnAsistencia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAsistencia.Font = new System.Drawing.Font("Palatino Linotype", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAsistencia.ForeColor = System.Drawing.Color.White;
+            this.btnAsistencia.Location = new System.Drawing.Point(3, 162);
+            this.btnAsistencia.Name = "btnAsistencia";
+            this.btnAsistencia.Size = new System.Drawing.Size(250, 40);
+            this.btnAsistencia.TabIndex = 0;
+            this.btnAsistencia.Text = "Asistencia";
+            this.btnAsistencia.UseVisualStyleBackColor = true;
+            this.btnAsistencia.Click += new System.EventHandler(this.btnAsistencia_Click);
             // 
             // button2
             // 
@@ -296,7 +297,7 @@ namespace ProyectoFinal2
         private System.Windows.Forms.PictureBox IconoMinimizar;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnAlumnos;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnAsistencia;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;

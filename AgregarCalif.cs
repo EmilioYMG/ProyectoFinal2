@@ -29,22 +29,20 @@ namespace ProyectoFinal2
 
         private void btnAcept_Click(object sender, EventArgs e)
         {
-           // try
-            //{
-                if (rdbNombre.Checked == true)
+            if (rdbNombre.Checked == true)
+            {
+                for(int i=0; i < alumnos.Count; i++)
                 {
-                    for(int i = 0; i < alumnos.Count; i++)
+                    if (alumnos[i].Nombre.ToString() == txtbNombre.Text)
                     {
-                        if (alumnos[i].Nombre == txtbNombre.Text)
-                        {
-                            txtbNL.Text = alumnos[i].NumLista.ToString();
-                            txtbApellidos.Text = alumnos[i].Apellidos;
-                        Asignar(alumnos[i]);
-                        }
+                        txtbApellidos.Text = alumnos[i].Apellidos;
+                        txtbNL.Text = alumnos[i].NumLista.ToString();
+                        Asignar(alumnos[i],i);
                     }
                 }
-            //}
+            }
         }
+
 
         private void rdbNombre_CheckedChanged(object sender, EventArgs e)
         {
@@ -66,21 +64,34 @@ namespace ProyectoFinal2
             txtbNombre.Enabled = false;
             txtbApellidos.Enabled = false;
         }
-        private void Asignar(Alumno al)
+        private void Asignar(Alumno al, int indice)
         {
-            foreach(Actividad act in al.Actividades)
+           for(int j = 0; j < al.Actividades.Count; j++)
+            {
+                if (al.Actividades[j].Nombre.ToString() == cmbNombAct.SelectedItem.ToString())
+                {
+                    al.Actividades[j].Calificacion = float.Parse(txtbCalif.Text);
+                }
+            }
+            /*foreach(Actividad act in al.Actividades)
             {
                 if (act.Nombre == cmbNombAct.SelectedItem.ToString())
                 {
                     act.Calificacion = float.Parse(txtbCalif.Text);
                 }
-            }
+            }*/
         }
 
         private void frmAgregarCalif_FormClosing(object sender, FormClosingEventArgs e)
         {
             Form1.alumnos = alumnos;
             Form1.actividades = actividades;
+
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

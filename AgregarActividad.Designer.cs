@@ -29,6 +29,7 @@ namespace ProyectoFinal2
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAgregarAct));
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
@@ -38,12 +39,16 @@ namespace ProyectoFinal2
             this.txtbPond = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnEditar = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(147, 196);
+            this.btnAceptar.Location = new System.Drawing.Point(145, 196);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
             this.btnAceptar.TabIndex = 0;
@@ -113,6 +118,30 @@ namespace ProyectoFinal2
             this.label3.TabIndex = 1;
             this.label3.Text = "%";
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.Location = new System.Drawing.Point(147, 196);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(75, 23);
+            this.btnEditar.TabIndex = 0;
+            this.btnEditar.Text = "Editar";
+            this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Location = new System.Drawing.Point(147, 196);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(75, 23);
+            this.btnEliminar.TabIndex = 0;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
             // frmAgregarAct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -125,24 +154,30 @@ namespace ProyectoFinal2
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.btnEliminar);
+            this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnAceptar);
             this.Name = "frmAgregarAct";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AgregarActividad";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtbNombre;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtbPond;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        public System.Windows.Forms.TextBox txtbNombre;
+        public System.Windows.Forms.TextBox txtbPond;
+        public System.Windows.Forms.Button btnAceptar;
+        public System.Windows.Forms.Button btnEditar;
+        public System.Windows.Forms.Button btnEliminar;
     }
 }

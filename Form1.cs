@@ -81,7 +81,7 @@ namespace ProyectoFinal2
 
         private void btnAlumnos_Click(object sender, EventArgs e)
         {
-            AbrirFormInPanel(new Alumnos());
+            AbrirFormInPanel(new Alumnos(alumnos,actividades));
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -97,6 +97,11 @@ namespace ProyectoFinal2
         private void btnAddAct_Click(object sender, EventArgs e)
         {
             AbrirFormInPanel(new frmAgregarCalif(actividades,alumnos));
+        }
+
+        private void btnAsistencia_Click(object sender, EventArgs e)
+        {
+            AbrirFormInPanel(new Asistencia(alumnos));
         }
     }
 }

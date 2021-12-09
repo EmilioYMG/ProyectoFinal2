@@ -18,13 +18,13 @@ namespace ProyectoFinal2
             dt.Columns.Add("Actividad");
             dt.Columns.Add("Calificación");
             dgvResumen.DataSource = dt;
-
         }
-        public List<Alumno> miLista;
+        public List<Alumno> alumnos;
+        public List<Actividad> actividades;
         
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            Alumnos frm = new Alumnos();
+            Alumnos frm = new Alumnos(Form1.alumnos,Form1.actividades);
             AddOwnedForm(frm);
             frm.alumnos = Form1.alumnos;
             foreach(Alumno alumno in frm.alumnos)

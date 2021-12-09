@@ -1,18 +1,20 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
+using System.IO;
 
 namespace ProyectoFinal2
 {
     public partial class Alumnos : Form,IPasardatos,IEditarAlumno
     {
         private DataTable dt;
-        public Alumnos()
+        public Alumnos(List<Alumno> alumnospadre,List<Actividad> actividadespadre)
         {
             InitializeComponent();
-            
+            alumnos = alumnospadre;
+            actividades = actividadespadre;
             dt = new DataTable();
             dt.Columns.Add("Número de lista");
             dt.Columns.Add("Apellidos");
@@ -22,15 +24,19 @@ namespace ProyectoFinal2
             dgvAlumnos.DataSource = dt;
             List<Alumno> sortedList = alumnos.OrderBy(Alumno => Alumno.NumLista).ToList();
             dgvAlumnos.DataSource = sortedList;
+            ValidarGuardar();
         }
         public List<Alumno> sortedlist;
-        public List<Alumno> alumnos = Form1.alumnos;
+        public List<Alumno> alumnos;
+        public List<Actividad> actividades;
         public Alumno NAlumno;
+        public bool banderaBE=false;
         public void Pasaralumno(Alumno NAlumno)
         {
             alumnos.Add(NAlumno);
             List<Alumno> sortedList= alumnos.OrderBy(Alumno => Alumno.NumLista).ToList();
             dgvAlumnos.DataSource = sortedList;
+            ValidarGuardar();
         }
         private void btnNuevo_Click(object sender, EventArgs e)
         {
@@ -60,7 +66,8 @@ namespace ProyectoFinal2
         }
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            
+
+            banderaBE = true;
             Buscar frm = new Buscar();
             frm.rbtnBuscar.Enabled = false;
             frm.rbtnEditar.Enabled = true;
@@ -82,8 +89,17 @@ namespace ProyectoFinal2
 
         private void dgvAlumnos_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            Buscar frm = Owner as Buscar;
-            AddOwnedForm(frm); 
+            if (banderaBE == true)
+            {
+                Buscar frm = Owner as Buscar;
+                AddOwnedForm(frm);
+            }
+            else
+            {
+                IngresarAlumno frm = Owner as IngresarAlumno;
+                AddOwnedForm(frm);
+            }
+            
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)
@@ -101,18 +117,19 @@ namespace ProyectoFinal2
         {
             IngresarAlumno frm = new IngresarAlumno();
             frm.btnGuardar.Hide();
-            frm.ShowDialog();
-            foreach (Alumno alumno in Form1.alumnos)
+            AddOwnedForm(frm);
+            if (dgvAlumnos.SelectedRows.Count > 0)
             {
-                if(alumno.Nombre == frm.txtbNombre.Text || alumno.Apellidos == frm.txtbApellidos.Text || alumno.NumLista.ToString() == frm.txtbNL.Text)
-                {
-                    frm.txtbNombre.Text = alumno.Nombre;
-                    frm.txtbApellidos.Text = alumno.Apellidos;
-                    frm.txtbNL.Text = alumno.NumLista.ToString();
-                    Form1.alumnos.Remove(alumno);
-                    MessageBox.Show("Alumno eliminado con éxito");
-                    break;
-                }
+                frm.txtbNL.Text = dgvAlumnos.CurrentRow.Cells[0].Value.ToString();
+                frm.txtbApellidos.Text = dgvAlumnos.CurrentRow.Cells[1].Value.ToString();
+                frm.txtbNombre.Text = dgvAlumnos.CurrentRow.Cells[2].Value.ToString();
+                //utilizando NAlumno para la comparación
+                frm.ShowDialog();
+                
+            }
+            else
+            {
+                MessageBox.Show("Se debe seleccionar una fila");
             }
         }
 
@@ -120,5 +137,46 @@ namespace ProyectoFinal2
         {
             Form1.alumnos = alumnos;
         }
-    }
+        #region Archivos
+        private void ValidarGuardar()
+        {
+            if (dgvAlumnos.Rows.Count == 0)
+            {
+                guardarToolStripMenuItem.Enabled = false;
+            }
+            else
+            {
+                guardarToolStripMenuItem.Enabled = true;
+            }
+        }
+        private void guardarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Archivos de texto | *.txt| Archivo delimitado por ','*.csv| *csv| Todos los archivos(*,*)| *.* ";
+            sfd.DefaultExt = "+.csv";
+            StreamWriter sw = null;
+            try
+            {
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    sw = new StreamWriter(sfd.FileName);
+                    sw.WriteLine("# Lista,Apellidos,Nombre,Promedio,Faltas");
+                    foreach(Alumno alumno in alumnos)
+                    {
+                        sw.WriteLine("{0},{1},{2},{3},{4}", alumno.NumLista, alumno.Apellidos, alumno.Nombre, alumno.Promedio, alumno.Faltas);
+                    }
+                }
+            }
+            catch (IOException error)
+            {
+                MessageBox.Show("Error", error.Message);
+            }
+            finally
+            {
+                sw.Close();
+            }
+
+        }
+    }   
+        #endregion
 }

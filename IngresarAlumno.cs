@@ -42,6 +42,13 @@ namespace ProyectoFinal2
                 AlumnoN.Apellidos = txtbApellidos.Text;
                 AlumnoN.NumLista = int.Parse(txtbNL.Text);
                 AlumnoN.Actividades = Form1.actividades;
+                float aux = 0;
+                foreach(Actividad act in AlumnoN.Actividades)
+                {
+                    aux = aux + (act.Calificacion*act.Ponderación)/10;
+                }
+                AlumnoN.Promedio = aux/10;
+
 
                 if (PD != null)
                     PD.Pasaralumno(AlumnoN);
@@ -73,6 +80,20 @@ namespace ProyectoFinal2
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
+            foreach (Alumno alumno in Form1.alumnos)
+            {
+                if (txtbNL.Text == alumno.NumLista.ToString())
+                {
+
+                    Form1.alumnos.Remove(alumno);
+                    MessageBox.Show("Alumno eliminado con éxito");
+                    break;
+                }
+                else
+                {
+                    MessageBox.Show("Alumno no encontrado");
+                }
+            }
             this.Close();
         }
     }

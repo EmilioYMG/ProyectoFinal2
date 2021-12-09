@@ -37,7 +37,12 @@ namespace ProyectoFinal2
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cargarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.guardarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlumnos)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -148,6 +153,38 @@ namespace ProyectoFinal2
             this.label2.TabIndex = 3;
             this.label2.Text = "Recuerda dar click en cerrar para guardar los cambios";
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.archivoToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.TabIndex = 4;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // archivoToolStripMenuItem
+            // 
+            this.archivoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.guardarToolStripMenuItem,
+            this.cargarToolStripMenuItem});
+            this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
+            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.archivoToolStripMenuItem.Text = "Archivo";
+            // 
+            // cargarToolStripMenuItem
+            // 
+            this.cargarToolStripMenuItem.Name = "cargarToolStripMenuItem";
+            this.cargarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cargarToolStripMenuItem.Text = "Cargar";
+            // 
+            // guardarToolStripMenuItem
+            // 
+            this.guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
+            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.guardarToolStripMenuItem.Text = "Guardar";
+            this.guardarToolStripMenuItem.Click += new System.EventHandler(this.guardarToolStripMenuItem_Click);
+            // 
             // Alumnos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -162,11 +199,15 @@ namespace ProyectoFinal2
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Alumnos";
             this.Text = "Alumnos";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Alumnos_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlumnos)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -182,5 +223,9 @@ namespace ProyectoFinal2
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem archivoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cargarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem guardarToolStripMenuItem;
     }
 }
