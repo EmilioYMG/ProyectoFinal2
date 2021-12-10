@@ -25,7 +25,6 @@ namespace ProyectoFinal2
             ValidarLista();
             sortedActs= actividadespadre.OrderBy(Actividad => Actividad.Id).ToList();
             dgvActividades.DataSource = sortedActs;
-
         }
         public Actividad nAct;
 
@@ -37,14 +36,7 @@ namespace ProyectoFinal2
                 sortedActs = new List<Actividad>();
             }
         }
-        private void btnNuevo_Click(object sender, EventArgs e)
-        {
-            frmAgregarAct IAC = new frmAgregarAct();
-            AddOwnedForm(IAC);
-            IAC.btnEditar.Hide();
-            IAC.btnEliminar.Hide();
-            IAC.ShowDialog();
-        }
+
         #region Interfaces usadas
         public void PasarAct(Actividad nAct)
         {
@@ -74,6 +66,15 @@ namespace ProyectoFinal2
             }
             Form1.alumnos = alumnos;
             this.Close();
+        }
+        #region Botones
+        private void btnNuevo_Click(object sender, EventArgs e)
+        {
+            frmAgregarAct IAC = new frmAgregarAct();
+            AddOwnedForm(IAC);
+            IAC.btnEditar.Hide();
+            IAC.btnEliminar.Hide();
+            IAC.ShowDialog();
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
@@ -111,7 +112,12 @@ namespace ProyectoFinal2
                 MessageBox.Show("Se debe seleccionar una fila");
             }
         }
-
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            List<Actividad> sorted = actividades.OrderBy(Actividad => Actividad.Id).ToList();
+            dgvActividades.DataSource = sorted;
+        }
+        #endregion
         private void dgvActividades_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (bandEditDel == true)
@@ -124,12 +130,6 @@ namespace ProyectoFinal2
                 frmAgregarAct delAct = Owner as frmAgregarAct;
                 AddOwnedForm(delAct);
             }
-        }
-
-        private void btnActualizar_Click(object sender, EventArgs e)
-        {
-            List<Actividad> sorted = actividades.OrderBy(Actividad => Actividad.Id).ToList();
-            dgvActividades.DataSource = sorted;
         }
     }
 }

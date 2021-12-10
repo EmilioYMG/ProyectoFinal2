@@ -26,11 +26,13 @@ namespace ProyectoFinal2
             dgvAlumnos.DataSource = sortedList;
             ValidarGuardar();
         }
+        //Variables
         public List<Alumno> sortedlist;
         public List<Alumno> alumnos;
         public List<Actividad> actividades;
         public Alumno NAlumno;
         public bool banderaBE=false;
+        #region Interfaces
         public void Pasaralumno(Alumno NAlumno)
         {
             alumnos.Add(NAlumno);
@@ -38,24 +40,10 @@ namespace ProyectoFinal2
             dgvAlumnos.DataSource = sortedList;
             ValidarGuardar();
         }
-        private void btnNuevo_Click(object sender, EventArgs e)
-        {
-            IngresarAlumno IA = new IngresarAlumno();
-            IA.btnEliminar.Hide();
-            AddOwnedForm(IA); 
-            IA.ShowDialog();
-        }
-
-        private void btnCerrar_Click(object sender, EventArgs e)
-        {
-            Form1.alumnos = alumnos;
-            this.Close();
-        }
-
         public void EditarAlumno(Alumno MAlumno)
         {
             int nl = MAlumno.NumLista;
-            foreach(Alumno alumno in alumnos)
+            foreach (Alumno alumno in alumnos)
             {
                 if (alumno.NumLista == nl)
                 {
@@ -64,9 +52,17 @@ namespace ProyectoFinal2
                 }
             }
         }
+        #endregion
+        #region Botones
+        private void btnNuevo_Click(object sender, EventArgs e)
+        {
+            IngresarAlumno IA = new IngresarAlumno();
+            IA.btnEliminar.Hide();
+            AddOwnedForm(IA); 
+            IA.ShowDialog();
+        }
         private void btnEditar_Click(object sender, EventArgs e)
         {
-
             banderaBE = true;
             Buscar frm = new Buscar();
             frm.rbtnBuscar.Enabled = false;
@@ -132,11 +128,8 @@ namespace ProyectoFinal2
                 MessageBox.Show("Se debe seleccionar una fila");
             }
         }
+        #endregion
 
-        private void Alumnos_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Form1.alumnos = alumnos;
-        }
         #region Archivos
         private void ValidarGuardar()
         {
@@ -177,6 +170,19 @@ namespace ProyectoFinal2
             }
 
         }
-    }   
         #endregion
+        #region Cerrar
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            Form1.alumnos = alumnos;
+            this.Close();
+        }
+        private void Alumnos_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Form1.alumnos = alumnos;
+        }
+        #endregion
+    }
+
+
 }

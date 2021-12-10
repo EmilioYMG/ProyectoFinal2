@@ -90,6 +90,7 @@ namespace ProyectoFinal2
         {
             Buscar b = new Buscar();
             b.FormClosed += new FormClosedEventHandler(MostrarLogoAlCerrar);
+            b.rbtnEditar.Hide();
             AbrirFormInPanel(b);
         }
 
