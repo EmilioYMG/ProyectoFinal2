@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
-using System.Linq;
-
 namespace ProyectoFinal2
 {
     public partial class Form1 : Form
