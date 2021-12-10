@@ -22,12 +22,21 @@ namespace ProyectoFinal2
             dt.Columns.Add("Nombre");
             dt.Columns.Add("Ponderación%");
             dgvActividades.DataSource = dt;
-            List<Actividad> sortedActs= actividadespadre.OrderBy(Actividad => Actividad.Id).ToList();
+            ValidarLista();
+            sortedActs= actividadespadre.OrderBy(Actividad => Actividad.Id).ToList();
             dgvActividades.DataSource = sortedActs;
 
         }
         public Actividad nAct;
-        
+
+        private void ValidarLista()
+        {
+            if (actividades == null)
+            {
+                actividades = new List<Actividad>();
+                sortedActs = new List<Actividad>();
+            }
+        }
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             frmAgregarAct IAC = new frmAgregarAct();

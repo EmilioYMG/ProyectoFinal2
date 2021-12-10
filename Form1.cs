@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Linq;
 
 namespace ProyectoFinal2
 {
@@ -24,7 +25,7 @@ namespace ProyectoFinal2
         {
             if (MenuVertical.Width == 250)
             {
-                MenuVertical.Width = 70;
+                MenuVertical.Width = 49;
             }
             else
                 MenuVertical.Width = 250;
@@ -64,14 +65,13 @@ namespace ProyectoFinal2
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
-
         private void AbrirFormInPanel(object Formhijo)
         {
             if (this.PanelContenedor.Controls.Count > 0)
             {
                 this.PanelContenedor.Controls.RemoveAt(0);
             }
-            Form fh=Formhijo as Form;
+            Form fh = Formhijo as Form;
             fh.TopLevel = false;
             fh.Dock = DockStyle.Fill;
             this.PanelContenedor.Controls.Add(fh);
@@ -81,27 +81,55 @@ namespace ProyectoFinal2
 
         private void btnAlumnos_Click(object sender, EventArgs e)
         {
-            AbrirFormInPanel(new Alumnos(alumnos,actividades));
+            Alumnos al = new Alumnos(alumnos, actividades);
+            al.FormClosed += new FormClosedEventHandler(MostrarLogoAlCerrar);
+            AbrirFormInPanel(al);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            AbrirFormInPanel(new Buscar());
+            Buscar b = new Buscar();
+            b.FormClosed += new FormClosedEventHandler(MostrarLogoAlCerrar);
+            AbrirFormInPanel(b);
         }
 
         private void btnActs_Click(object sender, EventArgs e)
         {
-            AbrirFormInPanel(new frmActividades(actividades, alumnos));
+            frmActividades acts = new frmActividades(actividades, alumnos);
+            acts.FormClosed += new FormClosedEventHandler(MostrarLogoAlCerrar);
+            AbrirFormInPanel(acts);
         }
 
         private void btnAddAct_Click(object sender, EventArgs e)
         {
-            AbrirFormInPanel(new frmAgregarCalif(actividades,alumnos));
+            frmAgregarCalif addCalif = new frmAgregarCalif(actividades, alumnos);
+            addCalif.FormClosed += new FormClosedEventHandler(MostrarLogoAlCerrar);
+            AbrirFormInPanel(addCalif);
         }
 
         private void btnAsistencia_Click(object sender, EventArgs e)
         {
-            AbrirFormInPanel(new Asistencia(alumnos));
+            Asistencia asist = new Asistencia(alumnos);
+            asist.FormClosed += new FormClosedEventHandler(MostrarLogoAlCerrar);
+            AbrirFormInPanel(asist);
+        }
+
+        public void Form1_Load(object sender, EventArgs e)
+        {
+            MostrarLogo();
+        }
+        private void MostrarLogo()
+        {
+            AbrirFormInPanel(new Logo());
+        }
+        private void MostrarLogoAlCerrar(object sender, FormClosedEventArgs e)
+        {
+            MostrarLogo();
+        }
+
+        private void btnInicio_Click(object sender, EventArgs e)
+        {
+            MostrarLogo();
         }
     }
 }

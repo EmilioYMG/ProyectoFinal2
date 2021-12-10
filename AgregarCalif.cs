@@ -41,6 +41,30 @@ namespace ProyectoFinal2
                     }
                 }
             }
+            if (rdbApe.Checked == true)
+            {
+                for (int i = 0; i < alumnos.Count; i++)
+                {
+                    if (alumnos[i].Apellidos.ToString() == txtbApellidos.Text)
+                    {
+                        txtbNombre.Text = alumnos[i].Nombre;
+                        txtbNL.Text = alumnos[i].NumLista.ToString();
+                        Asignar(alumnos[i], i);
+                    }
+                }
+            }
+            if (rdbNL.Checked == true)
+            {
+                for (int i = 0; i < alumnos.Count; i++)
+                {
+                    if (alumnos[i].NumLista.ToString()==txtbNL.Text)
+                    {
+                        txtbApellidos.Text = alumnos[i].Apellidos;
+                        txtbNombre.Text = alumnos[i].Nombre;
+                        Asignar(alumnos[i], i);
+                    }
+                }
+            }
         }
 
 
@@ -73,20 +97,12 @@ namespace ProyectoFinal2
                     al.Actividades[j].Calificacion = float.Parse(txtbCalif.Text);
                 }
             }
-            /*foreach(Actividad act in al.Actividades)
-            {
-                if (act.Nombre == cmbNombAct.SelectedItem.ToString())
-                {
-                    act.Calificacion = float.Parse(txtbCalif.Text);
-                }
-            }*/
         }
 
         private void frmAgregarCalif_FormClosing(object sender, FormClosingEventArgs e)
         {
             Form1.alumnos = alumnos;
             Form1.actividades = actividades;
-
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

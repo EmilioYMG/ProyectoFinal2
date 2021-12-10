@@ -51,7 +51,7 @@ namespace ProyectoFinal2
             this.btnAceptar.Location = new System.Drawing.Point(145, 196);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
-            this.btnAceptar.TabIndex = 0;
+            this.btnAceptar.TabIndex = 2;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
@@ -61,7 +61,7 @@ namespace ProyectoFinal2
             this.btnCancelar.Location = new System.Drawing.Point(228, 196);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 0;
+            this.btnCancelar.TabIndex = 3;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -80,7 +80,7 @@ namespace ProyectoFinal2
             this.txtbNombre.Location = new System.Drawing.Point(120, 98);
             this.txtbNombre.Name = "txtbNombre";
             this.txtbNombre.Size = new System.Drawing.Size(183, 20);
-            this.txtbNombre.TabIndex = 2;
+            this.txtbNombre.TabIndex = 0;
             // 
             // label2
             // 
@@ -96,7 +96,7 @@ namespace ProyectoFinal2
             this.txtbPond.Location = new System.Drawing.Point(120, 125);
             this.txtbPond.Name = "txtbPond";
             this.txtbPond.Size = new System.Drawing.Size(100, 20);
-            this.txtbPond.TabIndex = 2;
+            this.txtbPond.TabIndex = 1;
             // 
             // pictureBox1
             // 
@@ -124,20 +124,20 @@ namespace ProyectoFinal2
             // 
             // btnEditar
             // 
-            this.btnEditar.Location = new System.Drawing.Point(147, 196);
+            this.btnEditar.Location = new System.Drawing.Point(145, 196);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(75, 23);
-            this.btnEditar.TabIndex = 0;
+            this.btnEditar.TabIndex = 2;
             this.btnEditar.Text = "Editar";
             this.btnEditar.UseVisualStyleBackColor = true;
             this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(147, 196);
+            this.btnEliminar.Location = new System.Drawing.Point(145, 196);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 23);
-            this.btnEliminar.TabIndex = 0;
+            this.btnEliminar.TabIndex = 2;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
